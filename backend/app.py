@@ -7,6 +7,7 @@ import pyshark
 import tempfile
 import asyncio
 
+
 temp_dir = tempfile.gettempdir()
 
 app = Flask(__name__)
@@ -20,18 +21,18 @@ collection_name = "sem"
 
 
 def run_pkrscan(file_data):
-    print("going here")
-    
-    packets = pyshark.FileCapture(file_data, display_filter="sip")
-    # try:
-    #     loop = asyncio.new_event_loop()
-    #     asyncio.set_event_loop(loop)
-    #     packets = pyshark.FileCapture(file_data, display_filter="sip")
-    # except Exception as e:
-    #     print(f"Error loading pcap file: {e}")
-    #     return None  
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+   
+    try:
+        packets = pyshark.FileCapture(file_data, display_filter="sip", use_json=True)
+        print("going here")
+    except Exception as e:
+        print(f"Error loading pcap file: {e}")
+        return None  
 
     def packet_number(file_contents):
+        print("going here 2")
         count = sum(1 for _ in file_contents)
         return count
 
@@ -89,9 +90,9 @@ def run_pkrscan(file_data):
         return calls
 
     # analysis_for_each_packet = unique_call_id(packets) if packets else {}
-    temp = packet_number(packets)
+    temp = unique_call_id(packets)
     print(f"Number of packets: {temp}")
-
+    packets.close()
     return temp
 
 
@@ -112,6 +113,8 @@ def upload_file():
 
         
             pkrscan_output = run_pkrscan(temp_path)
+
+        
 
             if pkrscan_output is None:
                 return jsonify({"message": "Error processing pcap file"}), 500
@@ -158,4 +161,4 @@ def retrieve_pcap_from_mongodb(filename, collection):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, use_reloader=False)
+    app.run(debug=True, use_reloader=True)
