@@ -1,0 +1,135 @@
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .hero {
+    background-image: url(../images/bg.jpeg);
+    background-size: cover;
+    background-position: center;
+    height: 91.5vh;
+    color: beige;
+  }
+  
+  #logo-name1 {
+    font-weight: bolder;
+    background: linear-gradient(to right, #266CA9, black);
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .feature-icon {
+  background-color: #4682b4;
+  width: 4rem;
+  height: 4rem;
+  border-radius: .75rem;
+  }
+  
+  #space1 {
+  margin-top: 175px;
+  }
+  
+  @keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }                   
+  }
+  
+  .animation1 {
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 50%;
+  }
+  
+  .image {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); 
+  } 
+  
+  html {
+  scroll-behavior: smooth;
+  }
+  
+  .hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+  }
+  
+  .show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+  }
+  
+  .feature:nth-child(2) {
+  transition-delay: 200ms;
+  }
+  
+  .feature:nth-child(3) {
+  transition-delay: 400ms;
+  }
+  
+  .feature:nth-child(4) {
+  transition-delay: 600ms;
+  }
+  
+  .about-us-cont {
+  transition-duration: 2s;
+  }
+  
+  .button-40 {
+  --glow-color: #b0d0ff;
+  --glow-spread-color: #2b65e1c7;
+  --enhanced-glow-color: #cee2ff;
+  --btn-color: rgb(19, 53, 156);
+  border: .25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  margin-top: 50px;
+  box-shadow: 0 0 1em .25em var(--glow-color),
+      0 0 4em 1em var(--glow-spread-color),
+      inset 0 0 .75em .25em var(--glow-color);
+  text-shadow: 0 0 .5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+  }
+  
+  .button-40::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: .7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+  }
+  
+  .button-40:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em .25em var(--glow-color),
+      0 0 4em 2em var(--glow-spread-color),
+      inset 0 0 .75em .25em var(--glow-color);
+  }
+  
+  .button-40:active {
+  box-shadow: 0 0 0.6em .25em var(--glow-color),
+      0 0 2.5em 2em var(--glow-spread-color),
+      inset 0 0 .5em .25em var(--glow-color);
+  }
